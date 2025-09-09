@@ -1,0 +1,16 @@
+﻿1. Implement the collection class for the customer
+2. Create a menu driven program to test the collection class
+3.The following operations should be supported
+   a. Add a customer
+   b. Remove a customer
+   c. Update customer details
+   d. Display all customers
+   e. Search for a customer by name
+
+   ~~~~~~~~~~~~~~~~CUSTOMER MANAGEMENT SYSTEM~~~~~~~~~~~~~~~~~~~
+   TO ADD NEW CUSTOMER PRESS 1
+   TO REMOVE CUSTOMER PRESS 2
+   TO UPDATE CUSTOMER DETAILS PRESS 3
+   TO DISPLAY ALL CUSTOMERS PRESS 4
+   TO SEARCH FOR A CUSTOMER BY NAME PRESS 5
+   NOTE: PRESS 0 TO EXIT
