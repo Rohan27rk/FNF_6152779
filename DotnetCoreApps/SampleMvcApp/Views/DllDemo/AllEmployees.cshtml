@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DotnetCorelib.DTOs.EmployeeDTO>
+@{
+    ViewData["Title"] = "AllEmployees";
+}
+
+
+<style>
+    h1 {
+        text-align: center;
+        margin-top: 30px;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+
+    .table {
+        width: 90%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .table thead {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .table th, .table td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .table tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .table tbody tr:hover {
+        background-color: #e9f5ff;
+    }
+</style>
+
+<h1>All Employees</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Salary</th>
+            <th>Department</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.EmpName</td>
+                <td>@emp.EmpAddress</td>
+                <td>@emp.EmpSalary</td>
+                <td>@emp.DeptId</td>
+            </tr>
+        }
+    </tbody>
+</table>

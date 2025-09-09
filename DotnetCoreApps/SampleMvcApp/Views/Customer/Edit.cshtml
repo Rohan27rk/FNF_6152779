@@ -1,0 +1,23 @@
+﻿@model SampleMvcApp.Models.Customer
+
+@{
+    ViewData["Title"] = "Edit Customer";
+}
+
+<h2>Edit Customer</h2>
+
+<form method="post" asp-action="Edit">
+    <div>
+        <label>Customer Name</label>
+        <input type="text" name="CstName" value="@Model?.CstName" />
+    </div>
+    <div>
+        <label>Customer Address</label>
+        <input type="text" name="CstAddress" value="@Model?.CstAddress" />
+    </div>
+    <div>
+        <label>Bill Amount</label>
+        <input type="text" name="BillAmount" value="@Model?.BillAmount" />
+    </div>
+    <button type="submit">Update</button>
+</form>

@@ -1,0 +1,31 @@
+﻿@model List<Customer>  
+@{  
+    // ViewData["Title"] = "Index";  
+}  
+
+<h1 class="card-header">Welcome to My Customer Database</h1>  
+<a class="btn btn-dark m-3" href="@Url.Action("Create", "Customer")">Create New Customer</a>
+<table class="table table-bordered table-striped">  
+    <tr>  
+        <th>CustomerID</th>  
+        <th>CustomerName</th>  
+        <th>CustomerAddress</th>  
+        <th>CustomerBill</th>  
+        <th>Options</th>  
+    </tr>  
+    @foreach(var cst in Model)  
+    {  
+        <tr>  
+            <td>@cst.CstId</td>  
+            <td>@cst.CstName</td>  
+            <td>@cst.CstAddress</td>  
+            <td>@cst.BillAmount</td>  
+            <td>  
+                <a asp-action="Edit" class="btn btn-primary" asp-route-id="@cst.CstId">Edit</a>      
+                <a asp-action="Delete" class="btn btn-danger" asp-route-id="@cst.CstId">Delete</a>  
+            </td>  
+        </tr>  
+    }  
+</table>
+<br>
+<p>@ViewBag.Title</p>
