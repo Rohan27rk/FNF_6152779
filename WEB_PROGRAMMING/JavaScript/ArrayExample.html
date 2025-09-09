@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Arrays in js are like collection in c#. It allows to add, remove, update, copy and perform all kinds of operations on it.
+        let fruits = ["apple", "banana", "orange"];
+        console.log("the fruits in the basket is: " + fruits.length);
+        fruits.push("grape"); //adds an element to the end of the array
+        fruits.unshift("mango"); //adds an element to the beginning of the array
+        fruits = [...fruits, "kiwi"];//adds an element to the end of the array 
+        fruits = ["papaya",...fruits] //adds an element to the start of the array
+        fruits.splice(2, 0, "pineapple"); //adds an element at index 2 without removing any element
+        //fruits.splice(3, 1); //removes an element at index 3 
+        fruits.splice(1, 0,"strawberry", "blueberry"); //adds two elements at index 1 without removing any element
+        console.log(fruits);
+
+        console.log("itterating through the array using for loop");
+        for (let i = 0; i < fruits.length; i++) {
+            console.log(fruits[i]);
+        }
+        console.log("itterating through the array using for of loop");
+        for (let fruit of fruits) {
+            console.log(fruit);
+        }
+
+        //every array is an object of a class called array. we can use the array class and access functions to perform operations on the array.
+        //foreach takes a callback function which has 2 args: element and index
+        //This function is called for each element in the array and internally passing the value which can be used to perform operations/read the element.
+
+        fruits.forEach((fruit, key)=> {
+            console.log(`fruit at index ${key} is: ${fruit}`);
+        });
+
+        
+    </script>
+</body>
+</html>
