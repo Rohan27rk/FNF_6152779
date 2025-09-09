@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validate Me!</title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <!--Struct of the HTML file 
+    1. First give heading Validate me!
+    2. create 2 textfield 1 is for username and 2nd is for Password But give name as pin
+    3. But the username should be betn 6-8 characters olny and password is alphanumeric
+    4.create a drop down list for states and add options to that list 
+    5. After that i need to create a checkbox with label Validate Pin
+    6. Then give 3 radiobuttons for food and give any 3 food names
+    7. and then create a button for validate form
+    8. create a paragraph to display the msg like formsubmitted successfully or not successfully
+    -->
+    <h2>Validate me!</h2>
+    <form id="myForm">
+        <label>Username (6-8 characters)</label><br>
+        <input type="text" id="username" required><br><br>
+
+        <label>Pin</label><br>
+        <input type="text" id="pin" required><br><br>
+
+        <label>States</label><br>
+        <select id="state" required>
+            <option value="">--Select--</option>
+            <option value="option1">Maharashtra</option>
+            <option value="option2">Karnataka</option>
+            <option value="option3">Uttar Pradesh</option>
+            <option value="option4">Gujrat</option>
+            <option value="option5">Himachal Pradesh</option>
+        </select><br><br>
+
+        <!-- Checkbox -->
+        <input type="checkbox" id="validatePin"> Validate Pin<br><br>
+
+        <!-- Radio buttons -->
+        <label>Select one Food:</label><br>
+        <input type="radio" name="food" value="Milk"> Milk <br>
+        <input type="radio" name="food" value="Butter"> Butter <br>
+        <input type="radio" name="food" value="Cheese"> Cheese <br><br>
+
+        <button type="button" onclick="validateForm()">Check Form</button>
+    </form>
+
+    <p id="result" style="color:red;"></p>
+</body>
+</html>
