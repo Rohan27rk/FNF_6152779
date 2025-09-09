@@ -1,0 +1,19 @@
+<section class="calc-container">
+  <h1>Calc Program</h1>
+  <div class="calc-controls">
+    <input type="number" [(ngModel)]="fValue" placeholder="Enter First Value" />
+    
+    <select [(ngModel)]="option">
+      <option>Add</option>
+      <option>Subtract</option>
+      <option>Multiply</option>
+      <option>Divide</option>
+    </select>
+    
+    <input type="number" [(ngModel)]="sValue" placeholder="Enter Second Value" />
+    
+    <button (click)="onProcess()">=</button>
+    
+    <span class="result">{{ result }}</span>
+  </div>
+</section>

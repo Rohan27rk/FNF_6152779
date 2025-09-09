@@ -1,0 +1,8 @@
+<div class="employee-card">
+  <h2>Employee Details</h2>
+  <hr />
+  <p><strong>Name:</strong> {{ empName }}</p>
+  <p><strong>Address:</strong> {{ empAddress }}</p>
+  <p><strong>Salary:</strong> {{ empSalary | currency:'INR' }}</p>
+  <button (click)="onClick()">Click Me</button>
+</div>
