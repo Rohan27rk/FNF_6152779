@@ -1,0 +1,34 @@
+{
+  "contacts": [
+    {
+      "id": "1",
+      "PhoneNo": 1234567890,
+      "name": "Alex",
+      "photo": "pic1.png"
+    },
+    {
+      "id": "2",
+      "PhoneNo": 987654321,
+      "name": "Stark",
+      "photo": "pic2.png"
+    },
+    {
+      "id": "3",
+      "PhoneNo": 9865748421,
+      "name": "Jerry",
+      "photo": "pic3.png"
+    },
+    {
+      "id": "4",
+      "PhoneNo": 6354879841,
+      "name": "Giddy",
+      "photo": "pic4.png"
+    },
+    {
+      "id": 0,
+      "name": "Komal",
+      "PhoneNo": "7418529630",
+      "photo": "pic1.png"
+    }
+  ]
+}
