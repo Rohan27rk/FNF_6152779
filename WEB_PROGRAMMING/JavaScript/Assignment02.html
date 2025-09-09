@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Reference: <strong>the quick brown fox jump over the lazy dog</strong></p>
+    <input type="text" id="word" placeholder="Enter a word to Encrypt">
+    <button onclick="encrypt()">Encrypt</button>
+
+    <p id="result"></p>
+
+    <script>
+        let ref = "the quick brown fox jump over the lazy dog".split(" ");
+        function encrypt(){
+            let input = document.getElementById("word").value.toLowerCase();
+            let output = [];
+
+            for(let ch of input){
+                for(let i=0;i<ref.length;i++){
+                    let pos = ref[i].indexOf(ch);
+                    if(pos !== -1){
+                        output.push(i +""+ pos)
+                        break;
+                    }  // If character not found, keep it unchanged
+                }
+            }
+          
+            document.getElementById("result").innerText = output.join("");
+        }
+    </script>
+</body>
+</html>

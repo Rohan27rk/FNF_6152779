@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Html element can be programmatically referred using DOM.
+        //Document Object Model is a tree structure of the html elements. They can be itterated and traveresed using nodes, parents, children, siblings etc.
+        //HTML comes with api to access the emements by id, className, ElementName. Id must be unique in the document.
+        function compute(v1,v2,option){
+            switch(option){
+                case "Add": return v1+v2
+                case "Substract": return v1-v2
+                case "Multiply": return v1*v2
+                case "Divide": return v1/v2
+                default: return 0
+            }
+              
+        }
+        window.addEventListener("load", function () {
+            //called after the page is loaded into the browser.
+            const btn = document.getElementById("btnGet");
+            if(btn == undefined){
+                console.log("btn id is wrong");
+                return
+            }
+
+            btn.addEventListener("click", function(){
+                const v1 = parseFloat(document.getElementById("firstValue").value);
+                const v2 = parseFloat(document.getElementById("secondValue").value);
+                const option = document.getElementById("slOption").value;
+                const result = compute(v1,v2,option);
+                const sp = document.getElementById("spDisplay");
+                sp.innerText = "The result: " +result
+
+            });
+            
+        });
+    </script>
+
+    <div>
+        <h2>Calc Program</h2>
+        <hr>
+        
+        <p><input type="number" placeholder="First Value" id="firstValue" required></p>
+        <p><select id="slOption">
+            <option >---Select Option---</option>
+            <option >Add</option>
+            <option >Substract</option>
+            <option >Multiply</option>
+            <option >Divide</option>
+        </select></p>
+
+        <p><input type="number" id="secondValue" placeholder="Second Value" required></p>
+        <p>
+            <button id="btnGet" style="border: 3px solid magenta ;  color: black"><strong>Get Result</strong></button>
+        </p>
+        <p>
+            <span id="spDisplay" style="border: 3px solid magenta ;  color: black" ></span>
+        </p>
+      
+        
+    </div>
+</body>
+</html>

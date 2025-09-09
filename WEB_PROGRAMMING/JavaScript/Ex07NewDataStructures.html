@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //js with es8 came up with new collection classes like Map, Set which allowed developer to store unique and key-value pairs kind of data.
+        //set stores the data in unique values, it does not allow duplicate values.
+        // It is similar to an array but does not allow duplicate values.
+        //set is iterable, so we can use for of loop to iterate through the set.
+        // It is useful when we want to store unique values.
+        //set can be used to store unique values like user ids, product ids, etc.
+        // It is also useful when we want to store unique values from an array.
+        //set can be used to store unique values from an array.
+        // It is also useful when we want to store unique values from an array.
+        //set can be used to store unique values from an array.
+        // It is also useful when we want to store unique values from an array.
+        //set can be used to store unique values from an array.
+
+        function setExample() {
+            const set = new Set();
+            set.add("Item1");
+            if (set.has("Item1")) {
+                console.log("Item1 already exists in the set.");
+            }else {
+                set.add("Item1");
+            }
+            return set;
+        }
+        //map stores the data in key-value pairs where key is unique.
+        // It is similar to an object but allows any type of key.
+        //map is iterable, so we can use for of loop to iterate through the map.
+        // It is useful when we want to store key-value pairs like user details, product details, etc.
+        //map can be used to store key-value pairs like user details, product details, etc.
+        // It is also useful when we want to store key-value pairs like user details, product details, etc.
+        function mapExample() {
+            const items = new Map();
+            items.set("Apples", 250);
+            items.set("Bananas", 150);
+            items.set("Oranges", 200);
+            items.set("Grapes", 300);
+            items.set("Mangoes", 400);
+            console.log(items.has("Bananas")); // true
+            for (const [key,value] of items) {
+                console.log(`key: ${key}, value: ${value}`);
+                
+            }
+
+        }
+         mapExample();
+        const data = setExample();
+        window.addEventListener("load", function(){
+            const div = document.querySelector("div");
+            let strContent = "<h2>List of Items:</h2>";
+            for( const item of data) {
+                strContent += `<li>${item}</li>`;
+            }
+            div.innerHTML = strContent;
+
+        })
+    </script>
+    <div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./empManager.css">
+    <script src="./empManager.js"></script>
+    <script src="./htmlHelper.js"></script>
+    <script>
+    const mgr = new EmployeeRepo();
+
+    function renderTable() {
+        const employees = mgr.getAll();
+        const table = document.querySelector("table");
+        if (employees.length === 0) {
+            table.innerHTML = `<tr>
+                <td colspan="5" style="text-align:center;">No Employees</td>
+            </tr>`;
+            return;
+        }
+        let html = `<tr style="background:#277da1; color:#fff;">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Salary</th>
+            <th>Action</th>
+        </tr>`;
+        employees.forEach((emp, idx) => {
+            html += `<tr style="background:${idx%2===0 ? '#e0ecfc' : '#b5ead7'};">
+                <td>${emp.id}</td>
+                <td>${emp.name}</td>
+                <td>${emp.address}</td>
+                <td>₹${parseFloat(emp.salary).toLocaleString()}</td>
+                <td>
+                    <button style="background:#f3722c;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;"
+                        onclick="removeEmp('${emp.id}')">Delete</button>
+                </td>
+            </tr>`;
+        });
+        table.innerHTML = html;
+    }
+
+    function addRecord() {
+        const id = finder("empId").value;
+        const name = finder("empName").value;
+        const address = finder("empAddress").value;
+        const salary = finder("empSalary").value;
+        if (!id || !name || !address || !salary) {
+            alert("Please fill all fields.");
+            return;
+        }
+        const emp = new Employee(id, name, address, salary);
+        mgr.addEmp(emp);
+        alert("Employee Added Successfully");
+        renderTable();
+        clearInputs();
+    }
+
+    function removeEmp(id) {
+        mgr.removeEmp(id);
+        renderTable();
+    }
+
+    function clearInputs() {
+        finder("empId").value = "";
+        finder("empName").value = "";
+        finder("empAddress").value = "";
+        finder("empSalary").value = "";
+    }
+
+    function mapEvents() {
+        let [addBtn] = document.querySelectorAll("button");
+        addBtn.addEventListener("click", () => addRecord());
+        renderTable();
+    }
+    window.addEventListener("load", mapEvents);
+    </script>
+</head>
+<body>
+    <h1>Employee Management Software</h1>
+    <hr/>
+    <article>
+        <nav>
+            <a href="#">View All</a>
+            <a href="#">Add New</a>
+        </nav>
+        <div>
+            <h2>Table of Employee</h2>
+            <hr/>
+            <table style="width:100%; border-collapse:collapse; font-size:1.1em;"></table>
+        </div>
+        <div>
+            <h2>Emp Details</h2>
+            <hr/>
+            <p><input type="number" id="empId" placeholder="Employee Id"></p>
+            <p><input type="text" id="empName" placeholder="Employee Name"></p>
+            <p><input type="text" id="empAddress" placeholder="Employee Address"></p>
+            <p><input type="number" id="empSalary" placeholder="Employee Salary"></p>
+            <p>
+                <button>Add Record</button>
+                <button disabled style="opacity:0.5;cursor:not-allowed;">Update Record</button>
+            </p>
+        </div>
+        <div id="display"></div>
+    </article>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*const emp = {
+            EmpName: "John",
+            empId: 30,
+            EmpAddress: "Nanded",        
+        };
+        //an object internally is a dictionary with key value pairs.
+        emp.EmpSalary = 10000; //adding a new property to the object
+        console.log(typeof (emp)); //object
+        console.log(emp);
+
+        for(key in emp){
+            console.log(`The PropertyName: ${key} and its value is: ${emp[key]}`);
+        }*/
+
+        /*const temp = emp;
+        temp.EmpAddress = "Pune"; //changing the value of a property in the object
+        console.log(emp.EmpAddress); //Pune*/
+
+        /*const employee = function(name,id,address) {
+        this.EmpName = name;
+        this.empId = id;
+        this.EmpAddress = address;
+        }*/
+        /*
+        const emp1 = new employee("John", 30, "Nanded");
+        console.log(emp1);
+        const emp2 = new employee(emp1.EmpName, emp1.empId, emp1.EmpAddress);
+        emp2.EmpAddress = "Pune"; //changing the value of a property in the object
+        console.log(emp2.EmpAddress); //Pune
+        */
+
+        class customer{
+            constructor(id,name,address,billAmount){
+                this.id = id;
+                this.name = name;
+                this.address = address;
+                this.billAmount = billAmount;
+            }
+            display(){
+                console.log(`${this.name} has ordered a bill of amount ${this.billAmount} at ${this.address}`);
+            }
+        }
+            const cst = new customer(1, "Rohan", "Nanded", 1000);
+            cst.display();
+    </script>
+</body>
+</html>

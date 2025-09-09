@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup Page</title>
+    <style>
+        body {
+            background: #e0ecfc url('https://pngimg.com/d/cloud_PNG16.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 350px;
+            margin: 60px auto;
+            background: rgba(255,255,255,0.92);
+            border-radius: 16px;
+            box-shadow: 0 2px 16px #277da133;
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        h2 {
+            text-align: center;
+            color: #277da1;
+        }
+        input, button {
+            width: 100%;
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #277da1;
+        }
+        button {
+            background: #277da1;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #f3722c;
+        }
+        #result {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .switch {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .switch a {
+            color: #277da1;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        #userList {
+            margin-top: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 0.95em;
+        }
+        #userList span {
+            display: inline-block;
+            margin: 2px 8px 2px 0;
+            padding: 2px 8px;
+            background: #277da1;
+            color: #fff;
+            border-radius: 12px;
+        }
+        #logoutBtn {
+            margin-top: 10px;
+            background: #f3722c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            cursor: pointer;
+            display: none;
+        }
+        #logoutBtn:hover {
+            background: #277da1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="formTitle">Sign In</h2>
+        <form id="loginForm" autocomplete="off">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit" id="submitBtn">Sign In</button>
+        </form>
+        <div class="switch">
+            <span id="switchText">Don't have an account? <a id="switchLink">Sign Up</a></span>
+        </div>
+        <div id="result"></div>
+        <button id="logoutBtn">Sign Out</button>
+        <div id="userList"></div>
+    </div>
+    <script>
+            // class AuthManager{
+            //     constructor(){
+            //        this.usersKey = 'users';
+            //        this.signedInKey = 'signedInUsers';
+            //        this.currentUserKey = 'currentUser';
+
+            //     }
+            //     getuser(){
+            //         return JSON.parse(localStorage.getItem(this.usersKey) || "[]");
+            //     }
+            //     setuser(users){
+            //         localStorage.setItem(this.usersKey, JSON.stringify(users));
+            //     }
+            //     signup(username,password){
+            //         if(!username || !password){
+            //             return { success: false, message: "Please fill all fields." };
+            //         }
+            //     }
+            // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        class AuthManager {
+            constructor() {
+                this.usersKey = 'users';
+                this.signedInKey = 'signedInUsers';
+                this.currentUserKey = 'currentUser';
+            }
+            _getUsers() {
+                return JSON.parse(localStorage.getItem(this.usersKey) || "[]");
+            }
+            _setUsers(users) {
+                localStorage.setItem(this.usersKey, JSON.stringify(users));
+            }
+            signup(username, password) {
+                if (!username || !password) {
+                    return { success: false, message: "Please fill all fields." };
+                }
+                let users = this._getUsers();
+                if (users.find(u => u.username === username)) {
+                    return { success: false, message: "Username already exists. Please choose another." };
+                }
+                users.push({ username, password });
+                this._setUsers(users);
+                return { success: true, message: "Signup successful! You can now sign in." };
+            }
+            signin(username, password) {
+                if (!username || !password) {
+                    return { success: false, message: "Please fill all fields." };
+                }
+                let users = this._getUsers();
+                const user = users.find(u => u.username === username && u.password === password);
+                if (user) {
+                    // Add to signedInUsers
+                    let signedInUsers = JSON.parse(localStorage.getItem(this.signedInKey) || "[]");
+                    if (!signedInUsers.includes(username)) {
+                        signedInUsers.push(username);
+                        localStorage.setItem(this.signedInKey, JSON.stringify(signedInUsers));
+                    }
+                    localStorage.setItem(this.currentUserKey, username);
+                    return { success: true, message: `Login successful! Welcome, ${username}.` };
+                } else {
+                    return { success: false, message: "Invalid username or password." };
+                }
+            }
+            signoutAll() {
+                localStorage.setItem(this.signedInKey, JSON.stringify([]));
+                localStorage.removeItem(this.currentUserKey);
+            }
+            getSignedInUsers() {
+                return JSON.parse(localStorage.getItem(this.signedInKey) || "[]");
+            }
+            getCurrentUser() {
+                return localStorage.getItem(this.currentUserKey);
+            }
+        }
+
+        // DOM elements
+        const form = document.getElementById('loginForm');
+        const formTitle = document.getElementById('formTitle');
+        const submitBtn = document.getElementById('submitBtn');
+        const switchText = document.getElementById('switchText');
+        const resultDiv = document.getElementById('result');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const userListDiv = document.getElementById('userList');
+        const logoutBtn = document.getElementById('logoutBtn');
+        let isSignIn = true;
+        const auth = new AuthManager();
+
+        function getUsername() {
+            return usernameInput.value.trim();
+        }
+        function getPassword() {
+            return passwordInput.value.trim();
+        }
+        function showResult(message, color) {
+            resultDiv.textContent = message;
+            resultDiv.style.color = color;
+        }
+
+        function handleSignup() {
+            const result = auth.signup(getUsername(), getPassword());
+            showResult(result.message, result.success ? "green" : "red");
+            if (result.success) {
+                usernameInput.value = '';
+                passwordInput.value = '';
+            }
+        }
+        function handleSignin() {
+            const username = getUsername();
+            const result = auth.signin(username, getPassword());
+            showResult(result.message, result.success ? "green" : "red");
+            if (result.success) {
+                usernameInput.value = '';
+                passwordInput.value = '';
+                logoutBtn.style.display = "inline-block";
+                renderUserList();
+            }
+        }
+        function handleSignoutAll() {
+            auth.signoutAll();
+            showResult("All users signed out successfully.", "green");
+            logoutBtn.style.display = "none";
+            renderUserList();
+        }
+        function renderUserList() {
+            const users = auth.getSignedInUsers();
+            if (users.length === 0) {
+                userListDiv.innerHTML = "<em>No users signed in.</em>";
+                logoutBtn.style.display = "none";
+            } else {
+                userListDiv.innerHTML = "<b>Signed In Users:</b> " + users.map(u => `<span>${u}</span>`).join(" ");
+                logoutBtn.style.display = "inline-block";
+            }
+        }
+
+        function switchForm(e) {
+            e && e.preventDefault();
+            isSignIn = !isSignIn;
+            if (isSignIn) {
+                formTitle.textContent = "Sign In";
+                submitBtn.textContent = "Sign In";
+                switchText.innerHTML = `Don't have an account? <a id="switchLink">Sign Up</a>`;
+            } else {
+                formTitle.textContent = "Sign Up";
+                submitBtn.textContent = "Sign Up";
+                switchText.innerHTML = `Already have an account? <a id="switchLink">Sign In</a>`;
+            }
+            usernameInput.value = '';
+            passwordInput.value = '';
+            resultDiv.textContent = '';
+            document.getElementById('switchLink').onclick = switchForm;
+        }
+        document.getElementById('switchLink').onclick = switchForm;
+
+        form.onsubmit = function(e) {
+            e.preventDefault();
+            if (isSignIn) {
+                handleSignin();
+            } else {
+                handleSignup();
+            }
+        };
+
+        logoutBtn.onclick = handleSignoutAll;
+
+        // On page load, show signed in users and logout button if needed
+        window.onload = function() {
+            renderUserList();
+            if (auth.getSignedInUsers().length > 0) {
+                logoutBtn.style.display = "inline-block";
+            }
+        };
+    </script>
+</body>
+</html>

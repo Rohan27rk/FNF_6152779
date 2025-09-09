@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //Data types in js are number, string, boolean, object.
+        //Data types in js are dynamic, meaning they can change.
+        //let, const, and var are used to declare variables.
+        //let and const are introduced in ES6 for better readability and powerfullness.
+        //const cannot be reassigned, but its properties can be changed if it's an object.
+        //let can be reassigned, but it is block scoped.
+        //var is function scoped and can be redeclared, but it is not recommended to use
+        /*const num = 123;
+        alert("The data type of num is: " + typeof (num));
+        alert(num);
+        let data = "sample string";
+        alert("The data type of data is: " + typeof (data));
+        alert(data);
+        data = true;
+        alert("The data type of data is: " + typeof (data));
+        data = { name: "John", address: "Nanded" };
+        alert("The data type of data is: " + typeof (data));*/
+
+        /////////////////////////var vs let//////////////////////////
+        /*let example = "This is a var variable";
+        console.log(example);
+        {
+            let example = "This is a var variable inside a block";
+            console.log(example);
+        }
+        console.log(example);*/
+        ///////////////////////////undefined vs null/////////////////////////////////
+       /* let apple;
+        if (apple === undefined) {
+            console.log("apple is undefined");
+        } else {
+            console.log("apple is defined");
+        }
+        let apple123 = "apple123";
+        console.log(`apple123 is: ${apple123}`);*/
+        //null is a state when an object is not filled with any value. We usually set null for a variable which will be set with an object later
+        /*let obj = null;
+        if (obj === null) {//=== is used to check both value and type
+            console.log("obj is null");
+        } else {
+            console.log("obj is not null");
+        }*/
+        ///////////////////////////== vs ===/////////////////////////////////
+        //=== is used to check both value and type
+        //== is used to check only value, it does type coercion
+
+        /*const num1 = 10;
+        if(num1 == "10"){
+            console.log("num1 is equal to '10' using ==");
+        } 
+        if(num1 === "10"){
+            console.log("num1 is equal to '10' using ===");
+        }else{
+            console.log("num1 is not equal to '10' using ===");
+        }*/
+        //////////////////////////conversion Example//////////////////////////
+        //All input come to the app as string, so we need to convert them to number using Number() or parseInt() or parseFloat()
+        let num1 = parseFloat(prompt("Enter first number"));
+        let num2 = parseFloat(prompt("Enter second number"));
+        console.log(`The data type of num1 is: ${typeof(num1)}, The data type of num2 is: ${typeof(num2)}`);
+        if (isNaN(num1) || isNaN(num2)) {
+            alert("Please enter valid numbers");
+            throw new Error("Invalid input");
+        }
+        const message = `The added value is ${Number(num1) + Number(num2)}, The subtracted value is ${Number(num1) - Number(num2)}, The multiplied value is ${Number(num1) * Number(num2)}, The divided value is ${Number(num1) / Number(num2)}`;
+        alert(message);
+    </script>
+</body>
+</html>
