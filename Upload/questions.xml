@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Questions>
+  <Question>
+    <Question>Which data structure uses LIFO (Last In First Out)?</Question>
+    <Option1>Queue</Option1>
+    <Option2>Stack</Option2>
+    <Option3>Array</Option3>
+    <Option4>Linked List</Option4>
+    <CorrectAnswer>Stack</CorrectAnswer>
+    <Severity>Medium</Severity>
+  </Question>
+  <Question>
+    <Question>Which keyword is used to inherit a class in C#?</Question>
+    <Option1>this</Option1>
+    <Option2>base</Option2>
+    <Option3>inherits</Option3>
+    <Option4>extends</Option4>
+    <CorrectAnswer>base</CorrectAnswer>
+    <Severity>Medium</Severity>
+  </Question>
+  <Question>
+    <Question>Which HTTP method is idempotent?</Question>
+    <Option1>POST</Option1>
+    <Option2>GET</Option2>
+    <Option3>PATCH</Option3>
+    <Option4>CONNECT</Option4>
+    <CorrectAnswer>GET</CorrectAnswer>
+    <Severity>High</Severity>
+  </Question>
+</Questions>
